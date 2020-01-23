@@ -1,0 +1,11 @@
+//shoot rays and get hits//////////////////
+vector hitdir = {0,-10,0};
+vector pos;
+float u;
+float v;
+int primnum = intersect(1, @P, hitdir, pos, u, v);
+//show the data/////////////////////////
+if(primnum >= 0){
+    vector color = prim(1, "Cd", primnum);
+    @Cd = color;
+}
