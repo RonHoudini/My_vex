@@ -1,0 +1,23 @@
+//get the light vector/////////////////////
+vector lightpos = point(1, "P", 0);
+vector lightdir = lightpos - @P;
+v@lightdir = lightdir;
+//calculate the value according to angle//////////////
+vector normlightdir = normalize(lightdir);
+vector normnormals = normalize(@N);
+float dotpro = dot(normlightdir, normnormals);
+f@dotpro = dotpro;
+@Cd *= clamp(dotpro,0,5);
+@Cd *= chf("light_intensity")/length(lightdir);
+//calculate shadows///////////////////////////
+if(length(@Cd)>0){
+    vector shadowdir = lightpos - @P;
+    v@shadowdir = shadowdir; //viz////////
+    vector pointpos[];
+    int prim[];
+    vector uvw[];
+    i@prim = intersect_all(0, @P, shadowdir, pointpos, prim, uvw);
+    if(@prim > 1){
+        @Cd *= 0.01/length(lightdir);
+    }
+}
