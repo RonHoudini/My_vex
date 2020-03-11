@@ -1,0 +1,7 @@
+//get per frame displacement///////////////
+float perFrameDisp = @disp - point(1, "disp", 0);
+f@perFrameDisp = perFrameDisp;
+if(@Frame > 72){
+    @perFrameDisp = point(1, "perFrameDisp", 0)*0.9;
+}
+@P = abs(point(1, "P", 0) + set(@perFrameDisp,0,0))
